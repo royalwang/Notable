@@ -34,7 +34,7 @@ for (let n of ns) {
 ```
 
 ## 合并对象
-`Object.assign()` 后面的参数属性覆盖前面参数的同名属性:
+`Object.assign()` 后面的参数属性覆盖前面参数的同名属性, 只有一层, 浅拷贝:
 
 ```js
 var defaults = {
@@ -49,4 +49,11 @@ var config = {
 
 var result = Object.assign({}, defaults, config);
 console.log(JSON.stringify(result)); // 输出: { "id": 1, "name": "Alice","mail": "default@gmail.com" }
+```
+
+## 数组和集合
+```js
+const phaseSet = new Set();
+phaseSet.add(clazz.phase);
+Array.from(phaseSet);
 ```
