@@ -1,9 +1,9 @@
 ---
-title: HTML-Grid 布局
-tags: [Vue]
+title: Grid 布局
+tags: [Html]
 ---
 
-# HTML-Grid 布局
+# Grid 布局
 Grid 是二维的布局, 同时有行和列时使用, Flex 是一维布局, 只有行或者列时使用, Grid 学习可参考
 * [5 分钟学会 CSS Grid 布局](https://www.css88.com/archives/8506)
 * [如何使用 CSS Grid 快速而又灵活的布局](https://www.css88.com/archives/8512)

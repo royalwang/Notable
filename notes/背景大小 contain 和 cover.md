@@ -33,23 +33,22 @@ CSS 的背景有下列属性:
     <style>
         .contain, .cover {
             background-position: center;
-            background-repeat: no-repeat;
-            background-image: url(apple.png);
+            background-repeat  : no-repeat;
+            background-image   : url(apple.png);
 
-            width:  200px;
+            width : 200px;
             height: 200px;
-            float: left;
-            margin-right: 20px;
+            float : left;
+            margin-right : 20px;
             border-radius: 6px;
             box-shadow: 0 0 2px #CCC;
         }
 
-        .contain {
-            background-size: contain;
-        }
-
         .cover {
             background-size: cover;
+        }
+        .contain {
+            background-size: contain;
         }
     </style>
 </head>
