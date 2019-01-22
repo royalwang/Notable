@@ -57,3 +57,30 @@ const phaseSet = new Set();
 phaseSet.add(clazz.phase);
 Array.from(phaseSet);
 ```
+
+## 字符串
+[字符串的函数列表](https://www.w3schools.com/jsref/jsref_obj_string.asp):
+* endsWith()
+* includes()
+* indexOf()
+* match()
+* replace()
+* split()
+* startsWith()
+* toLowerCase()
+* toUpperCase()
+* trim()
+
+包含子字符串:
+```js
+var str = 'Hello world';
+if (str.includes('llo')) {
+
+}
+```
+
+大小写转换:
+```js
+str.toUpperCase();
+str.toLowerCase();
+```

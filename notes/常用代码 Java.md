@@ -7,6 +7,44 @@ pinned: true
 
 # 常用代码 Java
 
+## 非 null 赋值
+```java
+this.value = Objects.requireNonNull(value); // 如果 value 为 null 则抛出异常
+```
+
+## 使用 Optional 简化空指针判断
+[Optional](https://www.toutiao.com/i6649195540640694788/) 类这是 Java 8 新增的一个类，用以解决程序中常见的 NullPointerException 异常问题。
+
+下面为把用户名转换为大写的程序:
+
+```java
+User user = ...
+
+if (user != null) {
+    String userName = user.getUserName();
+    if (userName != null) {
+        return userName.toUpperCase();
+    }
+}
+
+return null;
+```
+
+使用 Optional 以简化成:
+```java
+User user = ...;
+
+Optional<User> userOpt = Optional.ofNullable(user);
+String name = userOpt.map(User::getUsername).map(String::toUpperCase).orElse(null);
+```
+关注一下几点:
+* `Optional.of(user)` 和 `Optional.ofNullable(user)` 的区别是 user 为 null 时 `of()` 抛空指针异常，`ofNullable()` 不会
+* `orElse()`: 如果有值就返回，否则返回一个给定的值作为默认值
+* `Optional.isPresent()` 和 `Optional.get()`: 
+  * user 等于 null 时 `userOpt.isPresent()` 返回 false，调用 `userOpt.get()` 获取存储的 user 对象时抛出空指针异常
+  * user 不为 null 时 `userOpt.isPresent()` 返回 true
+* `Optional.map()` 就是 Lambda 的 map，对数据类型进行映射转换
+
 ## CyclicBarrier
 [CyclicBarrier](https://www.toutiao.com/i6640482066855100931) 的内部利用 ReentrantLock 锁和关联的 Condition 条件队列来实现等待和唤醒的, CyclicBarrier 根据一个倒数计数来判断应该阻塞还是唤醒，类似于 CountDownLatch:
 1. 创建一个 CyclicBarrier: `b = new CyclicBarrier(5)`
@@ -156,6 +194,8 @@ public class Lambda {
         });
 
         // 2. 获取所有不同的名字，返回 Set
+        //    返回 List: Collectors.toList()
+        //    toCollection(Supplier)
         Set<String> names = lms.stream().map(Lambda::getName).collect(Collectors.toCollection(TreeSet::new));
         System.out.println(names);
 
