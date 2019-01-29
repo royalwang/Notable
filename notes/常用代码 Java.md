@@ -1,8 +1,9 @@
 ---
 title: 常用代码 Java
 tags: [Java]
-favorited: true
 pinned: true
+created: '2019-01-13T23:57:13.656Z'
+modified: '2019-01-27T00:29:02.492Z'
 ---
 
 # 常用代码 Java
@@ -96,4 +97,22 @@ Document doc = Jsoup.connect("http://jsoup.org").get();
 Element link = doc.select("a").first();
 String relHref = link.attr("href"); // == "/"
 String absHref = link.attr("abs:href"); // "http://jsoup.org/"
+```
+
+## 使用 try 自动关闭资源
+所有实现 java.lang.AutoCloseable 的类都作为资源自动关闭:
+
+```java
+try (InputStream in = new FileInputStream("/Users/Biao/Downloads/test.html")) {
+    System.out.println(in.available());
+}
+```
+
+## 关键词提取
+[HanLP](https://github.com/hankcs/HanLP) 是一系列模型与算法组成的 NLP 工具包，由大快搜索主导并完全开源，目标是普及自然语言处理在生产环境中的应用。HanLP 具备功能完善、性能高效、架构清晰、语料时新、可自定义的特点。
+
+```java
+String content = "内部模块坚持低耦合、模型坚持惰性加载、服务坚持静态提供、词典坚持明文发布，使用非常方便。";
+List<String> keywords = HanLP.extractKeyword(content, 10);
+System.out.println(keywords); // [坚持, 明文, 发布, 耦合, 模型, 词典, 惰性, 提供, 加载, 服务]
 ```

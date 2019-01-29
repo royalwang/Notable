@@ -1,6 +1,8 @@
 ---
 title: QChart
 tags: [Qt/Core]
+created: '2019-01-19T09:31:32.453Z'
+modified: '2019-01-26T01:36:00.473Z'
 ---
 
 # QChart

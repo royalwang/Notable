@@ -1,8 +1,9 @@
 ---
 title: 常用代码 JS
 tags: [JS]
-favorited: true
 pinned: true
+created: '2019-01-12T13:10:25.537Z'
+modified: '2019-01-25T22:44:40.792Z'
 ---
 
 # 常用代码 JS
@@ -56,6 +57,10 @@ console.log(JSON.stringify(result)); // 输出: { "id": 1, "name": "Alice","mail
 const phaseSet = new Set();
 phaseSet.add(clazz.phase);
 Array.from(phaseSet);
+
+const arr = [1, 2, 3, 4, 1, 2];
+const set = new Set(arr); // 传入数组创建 Set
+const str = Array.from(set).join(', ');
 ```
 
 ## 字符串
@@ -84,3 +89,24 @@ if (str.includes('llo')) {
 str.toUpperCase();
 str.toLowerCase();
 ```
+
+## 解构赋值
+从对象中提取所请求的属性，并将其分配给与属性相同名称的变量:
+
+```js
+// 可以有默认参数
+function fox({ id = 123, username }) {
+    console.log(id, username);
+}
+
+fox({ username: 'Alice' });
+```
+
+```js
+const { data } = await axios.get(...);
+const { data: newData } = await axios.get(...); // data 重命名
+const { id = 5 } = {}; // 解构时还可以赋值，避免 undefined
+```
+
+## call 和 reply
+`func.call(obj, args)` 等价于 `obj.func(args)` (obj 可能没有函数 func)，func() 中的 this 等于 obj。

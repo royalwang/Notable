@@ -1,8 +1,9 @@
 ---
 title: 常用代码 Qt
 tags: [Qt/Core]
-favorited: true
 pinned: true
+created: '2019-01-12T13:10:31.936Z'
+modified: '2019-01-25T22:44:08.679Z'
 ---
 
 # 常用代码 Qt
@@ -53,3 +54,27 @@ qint32 value = QRandomGenerator::global()->bounded(100); // [0, 100)
 * 如果连不上, 说明还没有启动, 启动程序并启动 QLocalServer 进行监听
 
 共享内存 `QSharedMemory` 也可以进程间通讯, 但是不能主动的推送信息给对方, QLocalSocket 可以.
+
+## 按键组合
+`QKeySequence("Alt+P")`: Alt 和 P 之间不能有空格
+
+## QMap
+```cpp
+// 遍历 Map
+void func(QMap<QString, int> map) {
+    QMapIterator<QString, int> iter(map);
+
+    while (iter.hasNext()) {
+        iter.next();
+        qDebug() << iter.key() << ": " << iter.value();
+    }
+}
+
+int main(int argc, char *argv[]) {
+    // 使用初始化列表创建 map
+    QMap<QString, int> map {{"name", 1}, {"box", 2}};
+
+    func(map);
+    func({{"name", 1}, {"box", 2}});
+}
+```
