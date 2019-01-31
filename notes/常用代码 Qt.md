@@ -3,7 +3,7 @@ title: 常用代码 Qt
 tags: [Qt/Core]
 pinned: true
 created: '2019-01-12T13:10:31.936Z'
-modified: '2019-01-25T22:44:08.679Z'
+modified: '2019-01-30T01:35:21.316Z'
 ---
 
 # 常用代码 Qt
@@ -77,4 +77,11 @@ int main(int argc, char *argv[]) {
     func(map);
     func({{"name", 1}, {"box", 2}});
 }
+```
+
+## 鼠标穿透
+在 Qt 中，QWidget 默认是非鼠标穿透的，如果将 QWidget 覆盖在其他控件上面，即使这个 QWidget 是透明的，鼠标也是无法点击下面的控件的。但是我们可以通过设置它的属性来实现鼠标穿透:
+
+```cpp
+QWidget::setAttribute(Qt::WA_TransparentForMouseEvents, true);
 ```

@@ -1,6 +1,8 @@
 ---
 title: Grid 布局
 tags: [Html]
+created: '2019-01-21T14:22:30.350Z'
+modified: '2019-01-31T02:59:20.277Z'
 ---
 
 # Grid 布局
@@ -51,7 +53,7 @@ grid-template-columns: repeat(12, 1fr);
 ```
 
 ## 经典的上中下布局:
-<img src="@attachment/grid-classic.png" width=658>
+<img src="../attachments/grid-classic.png" width=658>
 
 ```html
 <!DOCTYPE html>

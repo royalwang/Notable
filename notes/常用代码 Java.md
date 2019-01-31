@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-01-27T00:29:02.492Z'
+modified: '2019-01-31T02:58:28.383Z'
 ---
 
 # 常用代码 Java
@@ -53,7 +53,7 @@ String name = userOpt.map(User::getUsername).map(String::toUpperCase).orElse(nul
 2. 如果前 4 个线程都执行到了 `b.await()`
 3. 第 5 个线程却没有调用 `b.await()`，而是遇到问题，转而去调用了 `b.reset()`, 那么，前面 4 个阻塞在 `await()` 方法上的线程将抛出 BrokenBarrierException 异常
 
-<img src="@attachment/cyclic-barrier.jpg" width=300>
+<img src="../attachments/cyclic-barrier.jpg" width=300>
 
 ## 优先级队列
 [优先队列](https://www.toutiao.com/i6635540435437617671/)的作用是能保证每次取出的元素都是队列中权值最小的 (Java 的优先队列每次取最小元素，C++ 的优先队列每次取最大元素), 可以提供 Comparator 定义出队的权重比较, 默认使用小顶堆实现:

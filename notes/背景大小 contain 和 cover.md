@@ -1,6 +1,8 @@
 ---
 title: 背景大小 contain 和 cover
 tags: [Html]
+created: '2019-01-21T13:46:19.369Z'
+modified: '2019-01-31T03:00:42.286Z'
 ---
 
 # 背景大小 contain 和 cover
@@ -20,7 +22,7 @@ CSS 的背景有下列属性:
 * 包含 `contain`: Resize the background image to make sure the image is fully visible
 * 都是等比缩放
 
-<img src="@attachment/contain-cover.png" width=450>
+<img src="../attachments/contain-cover.png" width=450>
 
 ```html
 <!DOCTYPE html>
