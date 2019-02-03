@@ -3,7 +3,7 @@ title: 常用代码 Qt
 tags: [Qt/Core]
 pinned: true
 created: '2019-01-12T13:10:31.936Z'
-modified: '2019-01-30T01:35:21.316Z'
+modified: '2019-01-31T03:17:18.412Z'
 ---
 
 # 常用代码 Qt
@@ -62,8 +62,13 @@ qint32 value = QRandomGenerator::global()->bounded(100); // [0, 100)
 ```cpp
 // 遍历 Map
 void func(QMap<QString, int> map) {
-    QMapIterator<QString, int> iter(map);
+    // 方式一: 最简洁
+    for (auto i = map.cbegin(); i != map.cend(); ++i) {
+        qDebug() << i.key() << ": " << i.value();
+    }
 
+    // 方式二: 很 Java
+    QMapIterator<QString, int> iter(map);
     while (iter.hasNext()) {
         iter.next();
         qDebug() << iter.key() << ": " << iter.value();
