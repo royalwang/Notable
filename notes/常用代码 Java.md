@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-01-31T02:58:28.383Z'
+modified: '2019-02-05T01:08:26.769Z'
 ---
 
 # 常用代码 Java
@@ -116,3 +116,13 @@ String content = "内部模块坚持低耦合、模型坚持惰性加载、服�
 List<String> keywords = HanLP.extractKeyword(content, 10);
 System.out.println(keywords); // [坚持, 明文, 发布, 耦合, 模型, 词典, 惰性, 提供, 加载, 服务]
 ```
+
+## hash code
+如果对象的 `equals()` 方法被重写，那么对象的 `hashCode()` 方法也尽量重写:
+1. 如果两个对象 equals 相等，那么这两个对象的 hashCode 一定也相同
+2. 如果两个对象的 hashCode 相同，两个对象的 equals 不一定相同，只能说明这两个对象在散列存储结构中，存放于同一个位置
+
+HashSet, HashMap 中会使用到 hashCode 和 equals 方法。
+
+## Objects
+<img src="../attachments/objects.png" width=466>

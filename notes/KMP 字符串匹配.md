@@ -2,7 +2,7 @@
 title: KMP 字符串匹配
 tags: [Algorithm]
 created: '2019-02-04T05:13:30.339Z'
-modified: '2019-02-04T05:34:11.591Z'
+modified: '2019-02-05T02:23:05.968Z'
 ---
 
 # KMP 字符串匹配
@@ -79,3 +79,4 @@ public class Test {
     }
 }
 ```
+上面是最直接的求前缀表的方法，易于理解，实际还有效率更高的，百度 KMP next 数组。
