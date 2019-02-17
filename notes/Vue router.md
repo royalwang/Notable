@@ -2,7 +2,7 @@
 title: Vue router
 tags: [Vue]
 created: '2019-02-06T05:13:56.063Z'
-modified: '2019-02-06T13:55:06.052Z'
+modified: '2019-02-09T09:38:12.922Z'
 ---
 
 # Vue router
@@ -34,6 +34,8 @@ router.js 中配置路由:
 <router-link :to="{ name: 'analyais-learn-exam', params: { clazzId: clazzId }, query: { days: days } }" slot="extra" class="text-icon">
     查看详情 <Icon type="ios-arrow-forward"/>
 </router-link>
+
+<router-link to="/foo">Go to Foo</router-link>
 ```
 
 ```js
