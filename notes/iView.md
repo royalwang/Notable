@@ -1,6 +1,8 @@
 ---
 title: iView
 tags: [Vue]
+created: '2019-01-12T07:03:31.333Z'
+modified: '2019-02-27T03:04:11.898Z'
 ---
 
 # iView
@@ -25,6 +27,15 @@ RadioGroup 绑定:
     <Radio label="0">单选</Radio>
     <Radio label="1">多选</Radio>
 </RadioGroup>
+```
+
+## Card
+```html
+<Card dis-hover>
+    <p slot="title">Title</p>
+    <p slot="extra">Extra</p>
+    <div>Content of Card</div>
+</Card>
 ```
 
 ## Card 的按钮提示

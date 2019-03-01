@@ -2,7 +2,7 @@
 title: Grid 布局
 tags: [Html]
 created: '2019-01-21T14:22:30.350Z'
-modified: '2019-01-31T02:59:20.277Z'
+modified: '2019-02-27T05:27:27.078Z'
 ---
 
 # Grid 布局
@@ -12,15 +12,18 @@ Grid 是二维的布局, 同时有行和列时使用, Flex 是一维布局, 只�
 * [CSS Grid 布局完全指南](https://www.css88.com/archives/8510)
 * [Grid 布局完整指南](https://segmentfault.com/a/1190000012889793)
 
+> Grid 设置 gap 很方便，Flex 不能设置 gap: `grid-gap: 16px`。
+> 等比分配也方便: `grid-template-columns: repeat(7, 1fr)`。
+
 Grid Container 的全部属性:
 * display: `grid | inline-grid` (block 和行内)
-* grid-template-columns
-* grid-template-rows
-* grid-template-areas: 给网格命名, 语言上便于阅读, 和 item 的 grid-area 一起使用
+* **grid-template-columns**
+* **grid-template-rows**
+* **grid-template-areas**: 给网格命名, 语言上便于阅读, 和 item 的 grid-area 一起使用
 * grid-template
 * grid-column-gap
 * grid-row-gap
-* grid-gap
+* **grid-gap**: 只能在列/行之间创建缝隙，而不是在外部边缘创建
 * justify-items: `start | end | center | stretch (default)`
 * align-items: `start | end | center | stretch (default)`
 * justify-content: `start | end | center | stretch | space-around | space-between | space-evenly`
@@ -36,7 +39,7 @@ Grid Items 的全部属性:
 * grid-row-start
 * grid-row-end
 * grid-column: `grid-column-start + grid-column-end` 的简写, 属性值之间用 `/` 分隔
-* grid-row: 可以使用 span, 如 1 / span 3
+* grid-row: `1 / 3`, 表示跨单元格个数可以使用 span, 如 `1 / span 3`
 * grid-area
 * justify-self: `start | end | center | stretch`
 * align-self: `start | end | center | stretch`

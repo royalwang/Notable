@@ -2,7 +2,7 @@
 title: 常用代码 Html
 tags: [Html]
 created: '2019-01-25T22:14:46.212Z'
-modified: '2019-01-26T01:15:13.103Z'
+modified: '2019-02-27T05:28:23.679Z'
 pinned: true
 ---
 
@@ -28,4 +28,22 @@ pinned: true
 ```css
 transform-origin: left top;
 transform : rotate(90deg);
+```
+
+## [CSS: 换行和省略号](https://blog.csdn.net/liuyan19891230/article/details/50969393)
+```css
+/* 强制不换行 */
+p { white-space: nowrap; }
+
+/* 自动换行 */
+p { word-wrap: break-word; }
+
+/* 强制英文单词断行: 设置强制将英文单词断行，需要将行内元素设置为块级元素 */
+p { word-break: break-all; }
+
+/* 超出显示省略号 */
+p { 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 ```

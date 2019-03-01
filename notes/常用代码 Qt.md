@@ -3,10 +3,12 @@ title: 常用代码 Qt
 tags: [Qt/Core]
 pinned: true
 created: '2019-01-12T13:10:31.936Z'
-modified: '2019-01-31T03:17:18.412Z'
+modified: '2019-02-28T13:51:55.846Z'
 ---
 
 # 常用代码 Qt
+
+[C++ 11](http://blog.jobbole.com/44015/)
 
 ## UUID
 ```cpp
@@ -89,4 +91,17 @@ int main(int argc, char *argv[]) {
 
 ```cpp
 QWidget::setAttribute(Qt::WA_TransparentForMouseEvents, true);
+```
+
+## Strongly-typed enums 强类型枚举
+
+传统的 C++ 枚举类型存在一些缺陷：它们会将枚举常量暴露在外层作用域中（这可能导致名字冲突，如果同一个作用域中存在两个不同的枚举类型，但是具有相同的枚举常量就会冲突），而且它们会被隐式转换为整形，无法拥有特定的用户定义类型。
+
+在 C++11 中通过引入了一个称为强类型枚举的新类型，修正了这种情况。强类型枚举由关键字 `enum class` 标识。它不会将枚举常量暴露到外层作用域中，也不会隐式转换为整形，并且拥有用户指定的特定类型 (传统枚举也增加了这个性质)
+```cpp
+enum class Option {
+    One, Two, Three
+}
+
+Option o = Option::One;
 ```

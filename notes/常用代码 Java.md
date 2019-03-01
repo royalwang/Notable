@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-02-05T01:08:26.769Z'
+modified: '2019-03-01T02:25:36.489Z'
 ---
 
 # 常用代码 Java
@@ -86,8 +86,7 @@ public static void main(String[] args) throws IOException {
 ## 解析 HTML
 使用 [Jsoup](https://jsoup.org/cookbook/input/parse-document-from-string) 解析 HTML:
 ```java
-String html = "<html><head><title>First parse</title></head>"
-  + "<body><p>Parsed HTML into a doc.</p></body></html>";
+String html = "<html><head><title>First parse</title></head><body><p>Parsed HTML into a doc.</p></body></html>";
 Document doc = Jsoup.parse(html);
 doc.select("p").addClass("chapter");
 ```
@@ -126,3 +125,6 @@ HashSet, HashMap 中会使用到 hashCode 和 equals 方法。
 
 ## Objects
 <img src="../attachments/objects.png" width=466>
+
+## Logback
+<img src="../attachments/logback-level.png" width=519>

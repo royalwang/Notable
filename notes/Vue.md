@@ -2,7 +2,7 @@
 title: Vue
 tags: [Vue]
 created: '2019-01-13T12:24:16.914Z'
-modified: '2019-02-16T10:27:44.069Z'
+modified: '2019-02-17T06:48:36.208Z'
 ---
 
 # Vue
@@ -20,7 +20,7 @@ modified: '2019-02-16T10:27:44.069Z'
 ```html
 <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
 ```
-> 这个对象也可以是调用函数的返回值。
+> 这个对象也可以是调用函数的返回值、计算属性。
 
 ## filter
 把 avgPassRate 转换为百分比的格式进行输出，例如 0.123 输出 12.3%

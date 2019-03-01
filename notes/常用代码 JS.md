@@ -3,7 +3,7 @@ title: 常用代码 JS
 tags: [JS]
 pinned: true
 created: '2019-01-12T13:10:25.537Z'
-modified: '2019-01-25T22:44:40.792Z'
+modified: '2019-02-27T07:22:22.466Z'
 ---
 
 # 常用代码 JS
@@ -16,7 +16,7 @@ var milli = new Date().getTime();
 
 ## 随机数
 ```js
-const rand = Math.floor(Math.random() * 1000); // [0, 100)
+const rand = Math.floor(Math.random() * 1000); // [0, 1000)
 ```
 
 ## For 循环
@@ -65,13 +65,13 @@ const str = Array.from(set).join(', ');
 
 ## 字符串
 [字符串的函数列表](https://www.w3schools.com/jsref/jsref_obj_string.asp):
+* startsWith()
 * endsWith()
 * includes()
 * indexOf()
 * match()
 * replace()
 * split()
-* startsWith()
 * toLowerCase()
 * toUpperCase()
 * trim()
@@ -90,7 +90,7 @@ str.toUpperCase();
 str.toLowerCase();
 ```
 
-## 解构赋值
+## 对象解构赋值
 从对象中提取所请求的属性，并将其分配给与属性相同名称的变量:
 
 ```js
@@ -108,5 +108,19 @@ const { data: newData } = await axios.get(...); // data 重命名
 const { id = 5 } = {}; // 解构时还可以赋值，避免 undefined
 ```
 
+## 数组中的最大值
+```js
+const ns1 = [];
+console.log(Math.max(...ns1, 100));
+
+const ns2 = [1, 2];
+console.log(Math.max(...ns2));
+```
+
 ## call 和 reply
 `func.call(obj, args)` 等价于 `obj.func(args)` (obj 可能没有函数 func)，func() 中的 this 等于 obj。
+
+## 固定小数位
+```js
+d = d.toFixed(2);
+```
