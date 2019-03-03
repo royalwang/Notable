@@ -2,7 +2,7 @@
 title: Stream
 tags: [Java]
 created: '2019-02-03T08:46:51.216Z'
-modified: '2019-02-03T09:08:20.744Z'
+modified: '2019-03-03T01:27:35.609Z'
 ---
 
 # Stream
@@ -32,6 +32,18 @@ Stream<Integer> integerStream1 = Stream.iterate(1, item -> item + 1).limit(10);
 ## flatMap
 和 map 类似，不同的是其每个元素转换得到的是 Stream 对象，会把子 Stream 中的元素压缩到父集合中:
 <img src="../attachments/stream-flatmap.jpg">
+
+```java
+public static void main(String[] args) {
+    List<List<String>> list = new LinkedList<>();
+    list.add(Arrays.asList("One", "Two", "Three"));
+    list.add(Arrays.asList("Alice", "Bob", "Carry"));
+
+    // 二层的集合扁平化为一层的集合
+    List<String> result = list.stream().flatMap(List::stream).map(String::toUpperCase).collect(Collectors.toList());
+    System.out.println(result); // [ONE, TWO, THREE, ALICE, BOB, CARRY]
+}
+```
 
 ## limit
 对一个 Stream 进行`截断`操作，获取其`前 N 个元素`，如果原 Stream 中包含的元素个数小于 N，那就获取其所有的元素:

@@ -1,9 +1,13 @@
 ---
 title: DOM style
 tags: [Html]
+created: '2019-01-25T01:56:39.751Z'
+modified: '2019-03-02T09:42:13.351Z'
 ---
 
 # DOM style
+
+[HTML DOM Document 对象](http://www.w3school.com.cn/jsref/dom_obj_document.asp)
 
 ## Style 对象
 Style 对象表示一个个别的样式声明。

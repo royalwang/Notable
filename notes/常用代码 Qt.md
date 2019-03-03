@@ -3,7 +3,7 @@ title: 常用代码 Qt
 tags: [Qt/Core]
 pinned: true
 created: '2019-01-12T13:10:31.936Z'
-modified: '2019-02-28T13:51:55.846Z'
+modified: '2019-03-03T02:32:15.515Z'
 ---
 
 # 常用代码 Qt
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
 QWidget::setAttribute(Qt::WA_TransparentForMouseEvents, true);
 ```
 
-## Strongly-typed enums 强类型枚举
+## 强类型枚举
 
 传统的 C++ 枚举类型存在一些缺陷：它们会将枚举常量暴露在外层作用域中（这可能导致名字冲突，如果同一个作用域中存在两个不同的枚举类型，但是具有相同的枚举常量就会冲突），而且它们会被隐式转换为整形，无法拥有特定的用户定义类型。
 
@@ -105,3 +105,14 @@ enum class Option {
 
 Option o = Option::One;
 ```
+
+## 信号槽重载
+```cpp
+// QOverload<> 里面是参数列表，of() 里面是成员函数地址
+QObject::connect(comboBox, QOverload<const QString &>::of(&QComboBox::activated), [](const QString &text) {
+    qDebug() << text;
+});
+```
+
+## Misc
+* 启用 QSS: `this->setAttribute(Qt::WA_StyledBackground)`

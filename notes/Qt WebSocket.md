@@ -1,6 +1,8 @@
 ---
 title: Qt WebSocket
-tags: [Qt/Network]
+tags: [Qt/Net]
+created: '2019-01-07T08:56:11.314Z'
+modified: '2019-03-02T01:30:18.982Z'
 ---
 
 # Qt WebSocket
