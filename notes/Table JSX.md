@@ -1,6 +1,8 @@
 ---
 title: Table JSX
 tags: [Vue]
+created: '2019-01-22T06:30:58.379Z'
+modified: '2019-03-06T01:27:40.779Z'
 ---
 
 # Table JSX
@@ -29,12 +31,24 @@ columns: [   // 字典表的列名
     { title: '字段类型', key: 'type', width: 160 },
     { title: '备注', key: 'description' },
     { title: '操作', key: 'action', width: 160, align: 'center', render: (h, params) => {
-        // 编辑和禁用按钮
+        // 按钮
         return (
             <div class="cell-button-container">
                 <i-button ghost type="text" shape="circle" icon="md-close-circle" onClick={ () => { this.deleteDict(params.index); }}></i-button>
             </div>
         );
+    },
+    { title: '状态', key: 'enabled', align: 'center',
+        // Switch 按钮
+        render: (h, { row: student }) => {
+            return (
+                // i-switch 有 on-change 事件，在 JSX 中事件以 on 开头，第二个字母使用驼峰规则，所以事件处理属性为 onOn-change
+                <i-switch value={ student.age > 10 } size="large" onOn-change={ () => { this.change(student); } }>
+                    <span slot="open">启用</span>
+                    <span slot="close">禁用</span>
+                </i-switch>
+            );
+        }
     } }
 ]
 ```

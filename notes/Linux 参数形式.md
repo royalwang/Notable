@@ -1,8 +1,8 @@
 ---
 title: Linux 参数形式
-tags: [Tool]
+tags: [Misc]
 created: '2019-02-26T06:29:32.139Z'
-modified: '2019-02-26T06:31:04.992Z'
+modified: '2019-03-03T02:38:20.760Z'
 ---
 
 # Linux 参数形式

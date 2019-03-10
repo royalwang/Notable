@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-03-01T02:25:36.489Z'
+modified: '2019-03-04T08:20:22.517Z'
 ---
 
 # 常用代码 Java
@@ -128,3 +128,25 @@ HashSet, HashMap 中会使用到 hashCode 和 equals 方法。
 
 ## Logback
 <img src="../attachments/logback-level.png" width=519>
+
+## MyBatis
+特殊符号
+
+```xml
+<!--查询指定学生历次已批改过考试的成绩，考试名称、班级最高分、班级平均分-->
+<select id="findExamAnalysisByUserIdAndSubjectAndRange" resultType="map">
+    SELECT r.score, r.rank, e.title, e.highest_score highestScore, e.avg_score avgScore
+    FROM  exam_record r INNER JOIN exam e ON r.exam_id = e.id
+    WHERE r.user_id = #{studentId} AND e.subject = #{subject} AND r.status = 3
+    <if test="startTime != null">
+        AND e.start_time >= #{startTime}
+    </if>
+    <if test="endTime != null">
+        AND e.start_time <![CDATA[ < ]]> #{endTime}
+    </if>
+    ORDER BY e.start_time
+</select>
+```
+
+## Misc
+* `List<String> list = Arrays.asList("One", "Two")` 得到的 list 的长度不可以改变，也就是说不能添加删除元素，但是可以改变替换已经存在的元素

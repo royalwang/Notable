@@ -3,12 +3,10 @@ title: 常用代码 Qt
 tags: [Qt/Core]
 pinned: true
 created: '2019-01-12T13:10:31.936Z'
-modified: '2019-03-03T02:32:15.515Z'
+modified: '2019-03-03T12:38:01.734Z'
 ---
 
 # 常用代码 Qt
-
-[C++ 11](http://blog.jobbole.com/44015/)
 
 ## UUID
 ```cpp
@@ -93,18 +91,6 @@ int main(int argc, char *argv[]) {
 QWidget::setAttribute(Qt::WA_TransparentForMouseEvents, true);
 ```
 
-## 强类型枚举
-
-传统的 C++ 枚举类型存在一些缺陷：它们会将枚举常量暴露在外层作用域中（这可能导致名字冲突，如果同一个作用域中存在两个不同的枚举类型，但是具有相同的枚举常量就会冲突），而且它们会被隐式转换为整形，无法拥有特定的用户定义类型。
-
-在 C++11 中通过引入了一个称为强类型枚举的新类型，修正了这种情况。强类型枚举由关键字 `enum class` 标识。它不会将枚举常量暴露到外层作用域中，也不会隐式转换为整形，并且拥有用户指定的特定类型 (传统枚举也增加了这个性质)
-```cpp
-enum class Option {
-    One, Two, Three
-}
-
-Option o = Option::One;
-```
 
 ## 信号槽重载
 ```cpp
@@ -116,3 +102,4 @@ QObject::connect(comboBox, QOverload<const QString &>::of(&QComboBox::activated)
 
 ## Misc
 * 启用 QSS: `this->setAttribute(Qt::WA_StyledBackground)`
+* 显示提示: `QToolTip::showText(QCursor::pos(), "Hallo")`
