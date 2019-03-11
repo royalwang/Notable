@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-03-04T08:20:22.517Z'
+modified: '2019-03-10T14:30:26.495Z'
 ---
 
 # 常用代码 Java
@@ -45,6 +45,7 @@ String name = userOpt.map(User::getUsername).map(String::toUpperCase).orElse(nul
   * user 等于 null 时 `userOpt.isPresent()` 返回 false，调用 `userOpt.get()` 获取存储的 user 对象时抛出空指针异常
   * user 不为 null 时 `userOpt.isPresent()` 返回 true
 * `Optional.map()` 就是 Lambda 的 map，对数据类型进行映射转换
+* user 为 null 时不会执行 map 函数
 
 ## CyclicBarrier
 [CyclicBarrier](https://www.toutiao.com/i6640482066855100931) 的内部利用 ReentrantLock 锁和关联的 Condition 条件队列来实现等待和唤醒的, CyclicBarrier 根据一个倒数计数来判断应该阻塞还是唤醒，类似于 CountDownLatch:
@@ -147,6 +148,21 @@ HashSet, HashMap 中会使用到 hashCode 和 equals 方法。
     ORDER BY e.start_time
 </select>
 ```
+
+## Lombok 创建 log 对象
+```java
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class ExamService {
+    public void load() {
+        log.info("Prepading...");
+    }
+}
+```
+
+## Redis Template
+<img src="../attachments/redis-template-ops.png" width=554>
 
 ## Misc
 * `List<String> list = Arrays.asList("One", "Two")` 得到的 list 的长度不可以改变，也就是说不能添加删除元素，但是可以改变替换已经存在的元素

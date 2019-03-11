@@ -3,7 +3,7 @@ title: 常用代码 JS
 tags: [JS]
 pinned: true
 created: '2019-01-12T13:10:25.537Z'
-modified: '2019-03-10T04:58:04.923Z'
+modified: '2019-03-10T09:23:00.351Z'
 ---
 
 # 常用代码 JS
@@ -207,4 +207,26 @@ if (str.includes('llo')) {
 ```js
 str.toUpperCase();
 str.toLowerCase();
+```
+
+## Promise
+```js
+let p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const time = parseInt(Math.random() * 100);
+
+        // 异步代码
+        if (time % 2 == 0) {
+            resolve('even');
+        } else {
+            reject('odd');
+        }
+    }, 300);
+});
+
+let n = p.then((even) => {
+    console.log(even);
+}).catch((odd) => {
+    console.log(odd);
+});
 ```
