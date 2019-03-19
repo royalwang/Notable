@@ -2,11 +2,11 @@
 title: Table JSX
 tags: [Vue]
 created: '2019-01-22T06:30:58.379Z'
-modified: '2019-03-06T01:27:40.779Z'
+modified: '2019-03-12T14:04:10.151Z'
 ---
 
 # Table JSX
-使用 JSX 渲染复杂的 Table cell
+使用 JSX 渲染复杂的 Table cell，iView 3.2.0 以后可以使用 [slot-scope](https://www.iviewui.com/components/table#slot-scope_XF) 渲染 Table cell 了
 
 ```html
 <Table :columns="columns" :data="dicts" style="margin: 10px 0;"></Table>

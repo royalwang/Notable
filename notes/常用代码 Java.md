@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-03-10T14:30:26.495Z'
+modified: '2019-03-19T04:49:04.081Z'
 ---
 
 # 常用代码 Java
@@ -166,3 +166,4 @@ public class ExamService {
 
 ## Misc
 * `List<String> list = Arrays.asList("One", "Two")` 得到的 list 的长度不可以改变，也就是说不能添加删除元素，但是可以改变替换已经存在的元素
+

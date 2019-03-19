@@ -2,7 +2,7 @@
 title: Grid 布局
 tags: [Html]
 created: '2019-01-21T14:22:30.350Z'
-modified: '2019-03-02T01:19:33.577Z'
+modified: '2019-03-12T08:20:40.434Z'
 ---
 
 # Grid 布局
@@ -17,7 +17,7 @@ Grid 是二维的布局, 同时有行和列时使用, Flex 是一维布局, 只�
 
 Grid Container 的全部属性:
 * display: `grid | inline-grid` (block 和行内)
-* **grid-template-columns**
+* [**grid-template-columns**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-template-columns): auto, repeat, min-content, `max-content`, `minmax()`
 * **grid-template-rows**
 * **grid-template-areas**: 给网格命名, 语言上便于阅读, 和 item 的 grid-area 一起使用
 * grid-template

@@ -2,7 +2,7 @@
 title: Stream
 tags: [Java]
 created: '2019-02-03T08:46:51.216Z'
-modified: '2019-03-03T01:27:35.609Z'
+modified: '2019-03-13T03:47:51.596Z'
 ---
 
 # Stream
@@ -42,6 +42,10 @@ public static void main(String[] args) {
     // 二层的集合扁平化为一层的集合
     List<String> result = list.stream().flatMap(List::stream).map(String::toUpperCase).collect(Collectors.toList());
     System.out.println(result); // [ONE, TWO, THREE, ALICE, BOB, CARRY]
+    
+    Arrays.asList("Huang Biao", "Hill Man").stream()
+          .flatMap(e -> Arrays.asList(e.split(" ")).stream())
+          .collect(Collectors.toList()); // [Huang, Biao, Hill, Man]
 }
 ```
 
@@ -148,5 +152,16 @@ public class Lambda {
         // 注意: 如果 list 中有 2 个元素的 id 相同，则会报 duplicate key 的错误，解决这个问题可以给 toMap 第 3 个参数指定重复的时候使用哪一个元素
         lms.stream().collect(Collectors.toMap(Lambda::getId, l -> l, (oldValue, newValue) -> newValue));
     }
+}
+```
+
+```java
+public static void main(String[] args) {
+    // 1. 去重
+    // 2. 逆序
+    List<Integer> list = Arrays.asList(5, 2, 2, 3, 4)
+            .stream().collect(Collectors.toSet())
+            .stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+    System.out.println(list); // [5, 4, 3, 2]
 }
 ```

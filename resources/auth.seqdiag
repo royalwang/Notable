@@ -1,0 +1,16 @@
+Title               : 同步消息 ->、异步消息 -->、返回消息 -->>
+Browser -> Server   : protected resource
+Server -> Server    : check login status
+Note right of Server: 如果登陆了直接返回受保护资源\n如果没有则需要登录
+Server -> Browser   : redirect to login page
+Browser -> Auth     : redirect to login page
+Note over Auth      : 登录页在 Auth 服务器上
+Auth -> Browser     : represent login page
+Browser -> Auth     : Submit username and password
+Auth -> Browser     : redirect with access code
+Note over Auth      : Access code 不能用\n使用额 Get 返回
+Browser -> Server   : redirect with access code
+Server -> Auth      : switch access token
+Auth -->> Server    : access token
+Server -> Server    : save login status
+Browser -> Server   : protected resource with access token

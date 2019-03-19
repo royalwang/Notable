@@ -3,7 +3,7 @@ title: 常用代码 Qt
 tags: [Qt/Core]
 pinned: true
 created: '2019-01-12T13:10:31.936Z'
-modified: '2019-03-03T12:38:01.734Z'
+modified: '2019-03-17T14:57:45.121Z'
 ---
 
 # 常用代码 Qt
@@ -81,6 +81,34 @@ int main(int argc, char *argv[]) {
 
     func(map);
     func({{"name", 1}, {"box", 2}});
+}
+```
+
+## 初始化列表
+有了 std::initializer_list 之后，对于 STL 的 container 的初始化就方便多了, 比如以前初始化一个 vector 需要这样：
+
+```cpp
+std::vector v;
+v.push_back(1);
+v.push_back(2);
+v.push_back(3);
+v.push_back(4);
+```
+
+而现在 c++11 添加了 std::initializer_list 后，我们可以这样初始化:
+
+```cpp
+std::vector v = { 1, 2, 3, 4 };
+
+QStringList list {"One", "Two", "Three"};
+QStringList list = {"One", "Two", "Three"};
+```
+
+我们也可以使用迭代器访问 std::initializer_list 里的元素:
+
+```cpp
+for(auto i = l.begin(); i != l.end(); ++i) {
+      cout << *i << " ";
 }
 ```
 

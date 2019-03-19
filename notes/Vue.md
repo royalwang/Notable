@@ -2,12 +2,29 @@
 title: Vue
 tags: [Vue]
 created: '2019-01-13T12:24:16.914Z'
-modified: '2019-02-17T06:48:36.208Z'
+modified: '2019-03-14T02:56:21.881Z'
 ---
 
 # Vue
 
-## class
+## 属性访问
+可以访问对象的 null 属性，但是不能访问 null 对象的属性:
+
+```html
+<!-- OK -->
+<span>{{ user.name }}</span>
+
+<!-- Error: 因 user.name 不存在 -->
+<span>{{ user.name.length }}</span>
+
+-----------------------------------
+
+data: {
+    user: {}
+}
+```
+
+## 样式 class
 三元表达式绑定 class，要用数组:
 
 ```html
@@ -203,6 +220,9 @@ computed: {
   </template>
 </todo-list>
 ```
+
+## 强制更新
+用 created 和 mounted 如果还不能满足你的话，可以试试在请求完赋值后手动更新视图 `this.$forceUpdate()`
 
 ## 生命周期
 <img src="../attachments/vue-lifecycle.png" width=600>

@@ -1,6 +1,8 @@
 ---
 title: Lambda
 tags: [Java]
+created: '2019-01-22T14:09:56.678Z'
+modified: '2019-03-15T07:55:13.277Z'
 ---
 
 # Lambda
@@ -86,4 +88,17 @@ public class Lambda {
 ```java
 int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
 int min = IntStream.of(nums).min().getAsInt();
+```
+
+统计单词个数 (等价于 Scala 里的 `mapValues`):
+```java
+public static void main(String[] args) {
+    List<String> list = Arrays.asList("Hello", "Hello", "World");
+    Map<String, Long> map1 = list.stream().collect(Collectors.groupingBy(e->e, Collectors.counting()));
+    System.out.println(map1); // {Hello=2, World=1}
+
+    List<User> users = Arrays.asList(new User(1, "Biao"), new User(2, "Biao"), new User(3, "Alice"));
+    Map<String, Long> map2 = users.stream().collect(Collectors.groupingBy(User::getUsername, Collectors.counting()));
+    System.out.println(map2); // {Alice=1, Biao=2}
+}
 ```
