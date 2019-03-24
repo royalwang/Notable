@@ -1,6 +1,8 @@
 ---
 title: POI Excel
 tags: [Java]
+created: '2019-01-22T14:07:36.688Z'
+modified: '2019-03-19T06:29:18.678Z'
 ---
 
 # POI Excel
@@ -16,7 +18,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 /**
- * 从单元格中获取值并通过反射转换为指定的类型
+ * 从单元格中获取值指定类型的值
  *
  * @param sheet  Excel 表格
  * @param rowNum 行号
@@ -25,7 +27,7 @@ import org.apache.poi.ss.usermodel.Workbook;
  * @param c      返回类型
  * @return 单元格中的数据
  */
-private <T> T getCellValue(Sheet sheet, int rowNum, int colNum, Set<String> result, Class<T> c) throws Exception {
+private <T> T getCellValue(Sheet sheet, int rowNum, int colNum, Class<T> c, Set<String> result) throws Exception {
     // 1. 定义指定参数类型的构造函数
     // 2. 判断指定行是否存在，不存在默认返回 0
     // 3. 判断指定单元格是否存在，不存在默认返回 0

@@ -6,9 +6,8 @@ Server -> Browser   : redirect to login page
 Browser -> Auth     : redirect to login page
 Note over Auth      : 登录页在 Auth 服务器上
 Auth -> Browser     : represent login page
-Browser -> Auth     : Submit username and password
-Auth -> Browser     : redirect with access code
-Note over Auth      : Access code 不能用\n使用额 Get 返回
+Browser -> Auth     : submit username and password
+Auth -> Browser     : redirect with access code\n使用额 Get 重定向, code 可能被截获
 Browser -> Server   : redirect with access code
 Server -> Auth      : switch access token
 Auth -->> Server    : access token

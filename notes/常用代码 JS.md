@@ -3,7 +3,7 @@ title: 常用代码 JS
 tags: [JS]
 pinned: true
 created: '2019-01-12T13:10:25.537Z'
-modified: '2019-03-10T09:23:00.351Z'
+modified: '2019-03-24T01:13:52.239Z'
 ---
 
 # 常用代码 JS
@@ -230,3 +230,21 @@ let n = p.then((even) => {
     console.log(odd);
 });
 ```
+
+## 延迟触发
+函数在短时间内被多次频繁调用，只有在指定时间内不在被调用时才真正执行，可以使用 [underscore.js](https://www.html.cn/doc/underscore/) 来实现。
+例如输入文字进行搜索，每输入一个字符就执行一次搜索的话短时间内就会进行大量的无用搜索，更好的方案是等待输入结束，如 300 毫秒内不再输入时才执行搜索:
+```js
+editor.on('change', _.debounce(() => {
+    search(editor.getContent());
+}, 300));
+```
+想象每天上班大厦底下的电梯。把电梯完成一次运送，类比为一次函数的执行和响应。假设电梯有两种运行策略 throttle 和 debounce ，超时设定为15秒，不考虑容量限制:
+* throttle 策略的电梯: 保证如果电梯第一个人进来后，15 秒后准时运送一次，不等待。如果没有人，则待机
+* debounce 策略的电梯: 如果电梯里有人进来，等待 15 秒。如果又人进来，15秒等待重新计时，直到15秒超时，开始运送
+
+更信息的内容请参考 [浅谈 Underscore.js 中 _.throttle 和 _.debounce 的差异](https://segmentfault.com/a/1190000000755634)
+> `console.log(_.functions(_))` 列出 underscore 的所有函数
+
+## _.after
+`_.after(count, function)`: 创建一个函数, 只有在运行了 count 次之后才有效果. 在处理同组异步请求返回结果时, 如果你要确保同组里所有异步请求完成之后才 执行这个函数, 这将非常有用。

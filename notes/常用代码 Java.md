@@ -3,7 +3,7 @@ title: 常用代码 Java
 tags: [Java]
 pinned: true
 created: '2019-01-13T23:57:13.656Z'
-modified: '2019-03-19T04:49:04.081Z'
+modified: '2019-03-24T02:48:26.758Z'
 ---
 
 # 常用代码 Java
@@ -16,7 +16,7 @@ this.value = Objects.requireNonNull(value); // 如果 value 为 null 则抛出�
 ## 使用 Optional 简化空指针判断
 [Optional](https://www.toutiao.com/i6649195540640694788/) 类这是 Java 8 新增的一个类，用以解决程序中常见的 NullPointerException 异常问题。
 
-下面为把用户名转换为大写的程序:
+下面为`把用户名转换为大写`的程序:
 
 ```java
 User user = ...
@@ -40,21 +40,44 @@ String name = userOpt.map(User::getUsername).map(String::toUpperCase).orElse(nul
 ```
 关注以下几点:
 * `Optional.of(user)` 和 `Optional.ofNullable(user)` 的区别是 user 为 null 时 `of()` 抛空指针异常，`ofNullable()` 不会
-* `orElse()`: 如果有值就返回，否则返回一个给定的值作为默认值
+* `orElse(defaultValue)`: 如果有值就返回，否则返回一个给定的值作为默认值
 * `Optional.isPresent()` 和 `Optional.get()`: 
   * user 等于 null 时 `userOpt.isPresent()` 返回 false，调用 `userOpt.get()` 获取存储的 user 对象时抛出空指针异常
   * user 不为 null 时 `userOpt.isPresent()` 返回 true
-* `Optional.map()` 就是 Lambda 的 map，对数据类型进行映射转换
-* user 为 null 时不会执行 map 函数
+* `Optional.map()` 就是 Lambda 的 map，对数据类型进行映射转换，为 null 时不会执行 map 函数，也不会抛出异常
 
 ## CyclicBarrier
-[CyclicBarrier](https://www.toutiao.com/i6640482066855100931) 的内部利用 ReentrantLock 锁和关联的 Condition 条件队列来实现等待和唤醒的, CyclicBarrier 根据一个倒数计数来判断应该阻塞还是唤醒，类似于 CountDownLatch:
+通过它可以实现让一组线程等待至某个状态之后再`全部同时执行`，叫做回环是因为当所有等待线程都被释放以后，CyclicBarrier 可以被重用。
+
+使用步骤:
 1. 创建一个 CyclicBarrier: `b = new CyclicBarrier(5)`
-2. 当 5 个线程都调用了 `b.await()` 时一起往下执行
-2. 如果前 4 个线程都执行到了 `b.await()`
-3. 第 5 个线程却没有调用 `b.await()`，而是遇到问题，转而去调用了 `b.reset()`, 那么，前面 4 个阻塞在 `await()` 方法上的线程将抛出 BrokenBarrierException 异常
+2. 创建并启动 5 个线程
+3. 线程中调用 `b.await()`，等待
+4. 当 5 个线程中都调用了 `b.await()` 时这 5 个线程一起往下执行
+5. 如果前 4 个线程都执行到了 `b.await()`，但第 5 个线程却没有调用 `b.await()`，而是遇到问题，转而去调用了 `b.reset()`, 那么，前面 4 个阻塞在 `await()` 方法上的线程将抛出 BrokenBarrierException 异常
+
+[CyclicBarrier](https://www.toutiao.com/i6640482066855100931) 的内部利用 ReentrantLock 锁和关联的 Condition 条件队列来实现等待和唤醒的, CyclicBarrier 根据一个倒数计数来判断应该阻塞还是唤醒，类似于 CountDownLatch:
 
 <img src="../attachments/cyclic-barrier.jpg" width=300>
+
+> 每个调用 `CyclicBarrier.await()` 的线程继续往下执行，而不是启动线程的线程，如主线程
+
+## CountDownLatch
+比如有一个任务 A，它要等待其他 5 个任务执行完毕之后才能执行，此时就可以利用 CountDownLatch 来实现这种功能了:
+* A 中调用 `CountDownLatch.await()`
+* 其他 4 个线程中调用 `CountDownLatch.countDown()`
+
+使用步骤:
+1. 创建一个 CountDownLatch: `c = new CountDownLatch(5)`
+2. 创建并启动 5 个线程
+3. A 中调用 `c.await()`，等待
+4. 当 5 个线程都调用了 `c.countDown()` 后，A 继续往下执行
+
+[CountDownLatch](https://www.jianshu.com/p/205a61af1205) 是通过一个计数器来实现的，计数器的初始值为线程的数量。每当一个线程完成了自己的任务后，计数器的值就会减 1。当计数器值到达 0 时，它表示所有的线程已经完成了任务，然后在`闭锁上等待的线程`就可以恢复执行任务。
+
+> 闭锁线程往下执行，即调用 `CountDownLatch.await()` 的线程，而不是调用 `CountDownLatch.countDown()` 的线程
+
+[CountDownLatch、CyclicBarrier、Semaphore 用法总结](https://segmentfault.com/a/1190000012234469)
 
 ## 优先级队列
 [优先队列](https://www.toutiao.com/i6635540435437617671/)的作用是能保证每次取出的元素都是队列中权值最小的 (Java 的优先队列每次取最小元素，C++ 的优先队列每次取最大元素), 可以提供 Comparator 定义出队的权重比较, 默认使用小顶堆实现:

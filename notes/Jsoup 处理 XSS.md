@@ -2,7 +2,7 @@
 title: Jsoup 处理 XSS
 tags: [Java]
 created: '2019-03-12T03:35:31.459Z'
-modified: '2019-03-12T03:38:31.124Z'
+modified: '2019-03-19T06:38:20.534Z'
 ---
 
 # Jsoup 处理 XSS
@@ -19,7 +19,7 @@ public static Whitelist relaxed() {
             "sub", "sup", "table", "tbody", "td", "tfoot", "th", "thead", "tr", "u", "ul"
         )
 
-        .addAttributes("a", "href", "title")
+        .addAttributes("a", "href", "title") // a 标签的合法属性为 href 和 title
         .addAttributes("blockquote", "cite")
         .addAttributes("col", "span", "width")
         .addAttributes("colgroup", "span", "width")

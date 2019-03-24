@@ -2,7 +2,7 @@
 title: Stream
 tags: [Java]
 created: '2019-02-03T08:46:51.216Z'
-modified: '2019-03-13T03:47:51.596Z'
+modified: '2019-03-19T07:40:00.165Z'
 ---
 
 # Stream
@@ -26,7 +26,7 @@ Stream<Integer> integerStream1 = Stream.iterate(1, item -> item + 1).limit(10);
 <img src="../attachments/stream-filter.jpg">
 
 ## map
-对于 Stream 中包含的元素使用给定的转换函数进行转换操作，新生成的 Stream 只包含转换`生成另一种类型的元素`。这个方法有三个对于原始类型的变种方法，分别是：mapToInt，mapToLong 和 mapToDouble。这三个方法也比较好理解，比如 mapToInt 就是把原始 Stream转 换成一个新的 Stream，这个新生成的 Stream 中的元素都是 int 类型，之所以会有这样三个变种方法，可以免除自动装箱/拆箱的额外消耗:
+对于 Stream 中包含的元素使用给定的转换函数进行转换操作，新生成的 Stream 只包含转换后生成的`另一种类型的元素`。这个方法有三个对于原始类型的变种方法，分别是：mapToInt，mapToLong 和 mapToDouble。这三个方法也比较好理解，比如 mapToInt 就是把原始 Stream 转换成一个新的 Stream，这个新生成的 Stream 中的元素都是 int 类型，之所以会有这样三个变种方法，可以免除自动装箱/拆箱的额外消耗:
 <img src="../attachments/stream-map.jpg">
 
 ## flatMap
@@ -76,7 +76,7 @@ int min = IntStream.of(nums).min().getAsInt();
 
 ---
 
-使用 Lambda 的`函数引用`时, 只有一个参数, 并且只调用参数的一个函数语句:
+使用 Lambda 的`函数引用`时, 没有或者只有一个参数, 并且只有一条语句的调用:
 * 调用参数自己的无参函数: `User::getName`
 * 参数作为其他函数的参数: `System.out::println`
 
@@ -121,14 +121,16 @@ public class Lambda {
     public static void main(String[] args) {
         List<Lambda> lms = prepareData();
 
-        // 1. 过滤 id 小于 3 的元素
+        // 1. 只保留 id 大于 2 的元素，过滤掉 id 小于 3 的元素
         lms.stream().filter(e -> e.getId() > 2).forEach(e -> {
             System.out.println(JSON.toJSONString(e));
         });
 
-        // 2. 获取所有不同的名字，返回 Set
+        // 2. 获取所有不同的名字
         //    返回 List: Collectors.toList()
         //    Collectors.toCollection(Supplier)
+        // 2.1 返回 Set，还可以使用 Collectors.toSet()
+        // 2.2 也可以使用 distict 返回 List
         Set<String> names = lms.stream().map(Lambda::getName).collect(Collectors.toCollection(TreeSet::new));
         System.out.println(names);
 
