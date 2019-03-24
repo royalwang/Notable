@@ -1,11 +1,11 @@
 ---
-title: Stream
+title: Lambda and Stream
 tags: [Java]
 created: '2019-02-03T08:46:51.216Z'
-modified: '2019-03-19T07:40:00.165Z'
+modified: '2019-03-24T02:51:20.213Z'
 ---
 
-# Stream
+# Lambda and Stream
 <img src="../attachments/stream.jpg">
 
 创建 Stream:
@@ -165,5 +165,23 @@ public static void main(String[] args) {
             .stream().collect(Collectors.toSet())
             .stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
     System.out.println(list); // [5, 4, 3, 2]
+}
+```
+
+```java
+int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+int min = IntStream.of(nums).min().getAsInt();
+```
+
+统计单词个数 (等价于 Scala 里的 `mapValues`):
+```java
+public static void main(String[] args) {
+    List<String> list = Arrays.asList("Hello", "Hello", "World");
+    Map<String, Long> map1 = list.stream().collect(Collectors.groupingBy(e->e, Collectors.counting()));
+    System.out.println(map1); // {Hello=2, World=1}
+
+    List<User> users = Arrays.asList(new User(1, "Biao"), new User(2, "Biao"), new User(3, "Alice"));
+    Map<String, Long> map2 = users.stream().collect(Collectors.groupingBy(User::getUsername, Collectors.counting()));
+    System.out.println(map2); // {Alice=1, Biao=2}
 }
 ```
